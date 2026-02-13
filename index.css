@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Brand Colors */
+    --color-primary-dark: #1d2721;
+    --color-primary-light: #ffffff;
+    --color-accent: #b0d9a5;
+    --color-accent-hover: #a0c995;
+    --color-muted: rgba(29, 39, 33, 0.6);
+    --color-overlay: rgba(29, 39, 33, 0.5);
+    
+    /* Animation Easings */
+    --ease-breath-in: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-breath-out: cubic-bezier(0.7, 0, 0.84, 0);
+    --ease-flow: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-spring: cubic-bezier(0.68, -0.15, 0.265, 1.15);
+    --ease-dramatic: cubic-bezier(0.87, 0, 0.13, 1);
+    --ease-meditation: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
+    /* Durations */
+    --duration-micro: 200ms;
+    --duration-fast: 400ms;
+    --duration-medium: 600ms;
+    --duration-slow: 1000ms;
+    
+    /* shadcn variables */
+    --background: 0 0% 100%;
+    --foreground: 140 14% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 140 14% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 140 14% 14%;
+    --primary: 140 14% 14%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 100 35% 75%;
+    --secondary-foreground: 140 14% 14%;
+    --muted: 100 20% 95%;
+    --muted-foreground: 140 10% 40%;
+    --accent: 100 35% 75%;
+    --accent-foreground: 140 14% 14%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 100 20% 90%;
+    --input: 100 20% 90%;
+    --ring: 100 35% 75%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Work Sans', sans-serif;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12;
+  }
+  
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn var(--duration-medium) var(--ease-breath-in) forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp var(--duration-medium) var(--ease-breath-in) forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn var(--duration-medium) var(--ease-spring) forwards;
+  }
+  
+  /* Floating animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  /* Pulse glow */
+  .animate-pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+  
+  /* Gradient shift */
+  .animate-gradient-shift {
+    animation: gradientShift 15s ease infinite;
+    background-size: 200% 200%;
+  }
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(176, 217, 165, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(176, 217, 165, 0.5);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.1;
+  }
+  25% {
+    transform: translate(10px, -15px) scale(1.05);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translate(-5px, -25px) scale(1);
+    opacity: 0.1;
+  }
+  75% {
+    transform: translate(-15px, -10px) scale(0.95);
+    opacity: 0.15;
+  }
+}
+
+/* Particle animation */
+.particle {
+  animation: particleFloat var(--duration, 8s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Link underline animation */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width var(--duration-fast) var(--ease-flow), left var(--duration-fast) var(--ease-flow);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Button glow effect */
+.btn-glow {
+  transition: all var(--duration-fast) var(--ease-flow);
+}
+
+.btn-glow:hover {
+  box-shadow: 0 8px 32px rgba(176, 217, 165, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Card 3D effect */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform var(--duration-fast) var(--ease-flow), box-shadow var(--duration-fast) var(--ease-flow);
+}
+
+.card-3d:hover {
+  transform: translateY(-10px) translateZ(20px);
+  box-shadow: 0 20px 40px rgba(29, 39, 33, 0.15);
+}
+
+/* Input focus animation */
+.input-animated {
+  position: relative;
+}
+
+.input-animated::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width var(--duration-fast) var(--ease-flow), left var(--duration-fast) var(--ease-flow);
+}
+
+.input-animated:focus-within::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3830;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
